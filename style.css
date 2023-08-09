@@ -14,6 +14,7 @@ body {
     align-items: center;
     width: 100%;
     height: 100vh;
+    background-size: contain;
     background-color: crimson;
 }
 .main {
@@ -35,8 +36,13 @@ body {
     width: 100%;
 }
 
-.city:hover {
+.city:not(.error):hover {
     background-color: white;
+}
+
+.error {
+    cursor: default;
+    font-weight: 800;
 }
 
 #search-inp {

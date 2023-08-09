@@ -3,12 +3,26 @@ const API_KEY = "0d80ef40036046a98c2151921230908";
 const citiesList = document.querySelector(".cities-list");
 const searchInput = document.querySelector("#search-inp");
 
+async function changeBackground(keyword) {
+    const res = await fetch("https://source.unsplash.com/random/1920x1080?" + keyword);
+    const url = res.url;
+    document.body.style.background = `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('${url}')`;
+}
+
 function clearSearchResults() {
     const toDelete = citiesList.children;
     if (toDelete.length)
         Array.from(toDelete).forEach((element) => {
             element.remove();
         });
+}
+
+function AddNotFoundCity() {
+    clearSearchResults();
+    const notFound = document.createElement("li");
+    notFound.classList.add("city", "error");
+    notFound.innerText = "Sorry, We Couldn't find any location that matches the name you typed !";
+    citiesList.appendChild(notFound);
 }
 
 function addCities(cities) {
@@ -21,7 +35,9 @@ function addCities(cities) {
         cityNode.innerText = Unique;
         cityNode.setAttribute("id", Unique);
         cityNode.onclick = (e) => {
-            GetWeather(Unique);
+            GetWeather(Unique).then((res) => changeBackground(res.current.condition.text));
+            clearSearchResults();
+            searchInput.value = "";
         };
         citiesList.appendChild(cityNode);
     });
@@ -58,7 +74,10 @@ async function GetWeather(city) {
 searchInput.addEventListener("input", (e) => {
     const inputValue = e.currentTarget.value;
     if (inputValue.length >= 3) {
-        SearchCities(inputValue).then((res) => addCities(res));
+        SearchCities(inputValue).then((res) => {
+            if (res.length) addCities(res);
+            else AddNotFoundCity();
+        });
     } else {
         clearSearchResults();
     }
