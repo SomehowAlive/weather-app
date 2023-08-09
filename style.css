@@ -27,9 +27,11 @@ body {
     background-color: rgb(230, 230, 230);
 }
 .city {
+    cursor: pointer;
     user-select: none;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 1rem;
+    margin: 0.5rem 0 0 0;
     width: 100%;
 }
 

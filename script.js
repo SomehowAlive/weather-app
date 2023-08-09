@@ -15,10 +15,15 @@ function addCities(cities) {
     clearSearchResults();
     console.log(cities);
     cities.forEach((city) => {
-        const C = document.createElement("li");
-        C.classList.add("city");
-        C.innerText = `${city.name}, ${city.region}, ${city.country}`;
-        citiesList.appendChild(C);
+        const Unique = `${city.name}, ${city.region}, ${city.country}`;
+        const cityNode = document.createElement("li");
+        cityNode.classList.add("city");
+        cityNode.innerText = Unique;
+        cityNode.setAttribute("id", Unique);
+        cityNode.onclick = (e) => {
+            GetWeather(Unique);
+        };
+        citiesList.appendChild(cityNode);
     });
 }
 
@@ -33,7 +38,20 @@ async function SearchCities(keyword) {
     );
 
     const json = await res.json();
+    return json;
+}
 
+async function GetWeather(city) {
+    const res = await fetch(
+        BASE_URL +
+            "/forecast.json?" +
+            new URLSearchParams({
+                key: API_KEY,
+                q: city,
+            })
+    );
+    const json = await res.json();
+    console.log(json);
     return json;
 }
 
