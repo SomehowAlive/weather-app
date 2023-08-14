@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
     padding: 0;
     margin: 0;
@@ -10,34 +11,55 @@ ul {
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
+    overflow-y: hidden;
+    overflow-x: auto;
     background-size: contain;
-    background-color: crimson;
+    background-position: center;
+    background-color: rgb(22, 22, 22);
 }
-.main {
-    position: fixed;
-    top: 10%;
-    width: 450px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background-color: rgb(230, 230, 230);
+
+.weather-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 50%;
+    gap: 20px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+.search-cont {
+    margin: 4rem 0;
+    width: 380px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 30px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+.cities-list {
+    border-radius: 25px;
 }
 .city {
     cursor: pointer;
     user-select: none;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 1rem;
-    margin: 0.5rem 0 0 0;
+    margin: 0.4rem 0 0 0;
     width: 100%;
+    color: white;
 }
 
 .city:not(.error):hover {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .error {
@@ -49,8 +71,156 @@ body {
     width: 100%;
     outline: none;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     font-size: 1.5rem;
-    padding: 0.8rem 1.5rem;
-    background-color: white;
+    padding: 0.6rem 2rem;
+    backdrop-filter: blur(10px);
+    transition: 0.45s ease;
+    opacity: 0.5;
+}
+
+#search-inp:active,
+#search-inp:focus {
+    box-shadow: 0 0 25px -5px rgba(230, 230, 230, 0.8);
+    opacity: 1;
+}
+
+.current-card {
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    border-radius: 30px;
+    padding: 3rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+}
+
+.current-date {
+    font-weight: 100;
+}
+.current-text {
+    font-weight: 1000;
+    font-size: 2.8rem;
+}
+.current-city {
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+.location-icon {
+    width: 20px;
+    height: auto;
+    filter: invert();
+}
+.current-card,
+.current-city-cont,
+.temp-text,
+.temp-cont,
+.hourly-card-row2,
+.hourly-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-card {
+    gap: 8px;
+}
+
+.hourly-condition-icon,
+.condition-icon {
+    width: 64px;
+    height: auto;
+}
+
+.temp-cont {
+    gap: 20px;
+}
+
+.temp-text {
+    flex-direction: column;
+}
+
+.real-temp {
+    font-weight: 800;
+    margin-bottom: -10px;
+    font-size: 2.2rem;
+}
+
+.feels-like-temp {
+    font-weight: 200;
+}
+
+.hourly-forecast-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.title {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-weight: 800;
+}
+
+@keyframes AppearSmoothly {
+    from {
+        transform: translate(0, -100%) scaleY(0);
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    to {
+        transform: none;
+    }
+}
+.hourly-card {
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 2rem 4rem;
+    border-radius: 30px;
+    scroll-snap-align: start;
+    width: 190px;
+    height: 190px;
+    animation: AppearSmoothly 0.35s ease-in-out both;
+}
+
+.hourly-card-row2 {
+    flex-direction: row;
+}
+
+.hourly-text {
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+.hourly-temp {
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.hourly-cards {
+    display: flex;
+    gap: 50px;
+    height: 100%;
+    padding: 1rem 0;
+    width: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.hourly-cards::-webkit-scrollbar {
+    height: 4px;
+}
+.hourly-cards::-webkit-scrollbar-thumb,
+.hourly-cards::-webkit-scrollbar-track {
+    border-radius: 30px;
+}
+.hourly-cards::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+}
+.hourly-cards::-webkit-scrollbar-track {
+    background: rgb(187, 187, 187);
 }

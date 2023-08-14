@@ -7,9 +7,38 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="main">
-            <input type="text" placeholder="type a name of a city" id="search-inp" />
+        <div class="search-cont">
+            <input type="text" placeholder="Type the name of a city" id="search-inp" />
             <ul class="cities-list"></ul>
+        </div>
+        <div class="weather-results">
+            <div class="current-card">
+                <p class="current-date"></p>
+
+                <p class="current-city-cont">
+                    <img class="location-icon" src="https://img.icons8.com/?size=512&id=p5n5ZAUprZsA&format=png" />
+                    <span class="current-city"></span>
+                </p>
+                <p class="current-text"></p>
+                <div class="temp-cont">
+                    <img src="" alt="" class="condition-icon" />
+                    <div class="temp-text">
+                        <p class="real-temp">
+                            <span class="temp"></span>
+                            °C
+                        </p>
+                        <p class="feels-like-temp">
+                            feels like
+                            <span class="feels-like">36</span>
+                            °C
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="hourly-forecast-cont">
+                <h2 class="title">Hourly Forecast</h2>
+                <div class="hourly-cards"></div>
+            </div>
         </div>
     </body>
     <script src="script.js"></script>
