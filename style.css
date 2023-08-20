@@ -37,11 +37,10 @@ img {
     height: auto;
 }
 .search-cont {
-    margin: 4rem 0;
-    width: 380px;
+    margin-top: 4rem;
+    width: 350px;
     border-radius: 25px;
     background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
     box-shadow: 0 30px 15px -5px rgba(0, 0, 0, 0.2);
 }
 
@@ -92,7 +91,7 @@ img {
     padding: 3rem;
     color: white;
     background-color: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
 .current-date {
@@ -178,7 +177,7 @@ img {
     flex-direction: column;
     font-family: "Poppins", sans-serif;
     background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     color: white;
     padding: 2rem 4rem;
     border-radius: 30px;
@@ -221,6 +220,10 @@ img {
 .hourly-cards::-webkit-scrollbar-thumb {
     background: rgb(255, 255, 255);
 }
+
+.hourly-cards::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 77, 219);
+}
 .hourly-cards::-webkit-scrollbar-track {
-    background: rgb(187, 187, 187);
+    background: rgb(150, 150, 150);
 }
